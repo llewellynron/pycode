@@ -273,38 +273,128 @@
 ## Hands-On Challenges - Functions
 # 
 # How to solve these coding challenges:
-# 
-#     Write your solution in PyCharm or in your preferred Python IDE.
-# 
-#     If your solution is not correct, then try to understand the error messages, watch the video again, rewrite the solution, and test it again. Repeat this step until you get the correct solution.
-# 
+#     If your solution is not correct, then try to understand the error
+#     messages, watch the video again, rewrite the solution, and test it again.
+#     Repeat this step until you get the correct solution.
 #     Save the solution in a file for future reference or recap.
-# 
-# 
+
 ## Challenge #1
 # Write a Python function that takes a list as an argument and returns a new list
 # with unique elements of the first list in the same order.
 # Sample List : [1,2,3,3,3,3,4,5, 1, 3, 5, 5, 5]
 # Unique List : [1, 2, 3, 4, 5]
-
+# def unique_set(l1):
+#     return(list(set(l1)))     # Set may not return same order
+# l1 = [1,2,3,3,3,3,4,5, 1, 3, 5, 5, 5]
+# print(unique_set(l1))
+#
+# def unique_list(my_list):
+#     tmp_list = list()
+#     for x in my_list:
+#         if x not in tmp_list:
+#             tmp_list.append(x)
+#     return tmp_list
+# friends = ['Dan', 'Maria', 'Dan', 'Dan', 'John', 'Dan']
+# print(unique_list(friends))
 
 ## Challenge #2
 # Write a Python function to check whether a number is perfect or not.
 # The function should return True if the number is perfect and False otherwise.
 # Perfect numbers: https://www.britannica.com/science/perfect-number
-# Are you stuck? Do you want to see the solution to this exercise? Click here.
+# def check_if_perfect(num1):
+#     l1=list()
+#     for i in range(1, int(num1/2)+1):
+#         if num1 % i == 0:
+#             l1.append(i)
+#     sum1 = sum(l1)
+#     # print(sum1, l1)       # for debug
+#     if sum1 == num1:
+#         print(f"{num1} is perfect")
+#     else:
+#         print(f"{num1} is not perfect")
+# check_if_perfect(6)
+# check_if_perfect(9)
+# check_if_perfect(28)
+# check_if_perfect(333)
+# check_if_perfect(496)
 
+# def all_divisors(n):
+#     """
+#      This function returns all divisors of a number
+#     """
+#     divisors = []
+#     for x in range(1, int(n/2)+1):
+#         if n % x == 0:
+#             divisors.append(x)
+#     return divisors
+# def perfect_number(n):
+#     divs = all_divisors(n)
+#     if sum(divs) == n:
+#         return True
+#     else:
+#         return False
+# # calling the function
+# n = 496
+# if perfect_number(n):
+#     print(f'{n} is one rare of a kind number, it\'s a perfect number')
+# else:
+#     print(f'Nothing special about {n}, it\'s no perfect number')
 
 ## Challenge #3
 # Create a function that takes an integer as an argument and returns True if
 # it’s a prime number and False otherwise.
-# Are you stuck? Do you want to see the solution to this exercise? Click here.
 
+# def all_divisors(n):
+#     """
+#      This function returns all divisors of a number
+#     """
+#     divisors = []
+#     for x in range(1, int(n/2)+1):
+#         if n % x == 0:
+#             divisors.append(x)
+#     return divisors
+# def check_if_prime(num1):
+#     my_divisors = all_divisors(num1)
+#     if len(my_divisors) == 1:
+#         print(f"{num1} is prime number.")
+#     else:
+#         print(f"{num1} is not prime number.")
+# check_if_prime(3)
+# check_if_prime(6)
+# check_if_prime(7)
+
+# def is_prime(n):
+#     prime = True
+#     if n == 1: # 1 is not a prime number, the first prime numnber is 2
+#         return False
+#     i = 1
+#     while i < n // 2:
+#         i = i + 1
+#         if n % i == 0:
+#             prime = False
+#             break
+#     return prime # returns True or False
 
 ## Challenge #4
 # Using the function defined in the previous challenge find 5 prime numbers greater
 # than 1,000,000
-# Are you stuck? Do you want to see the solution to this exercise? Click here.
+# Solution 1:
+# check_num = 1000000
+# count_num = 0
+# while count_num < 5:
+#     check_num += 1
+#     if is_prime(check_num):
+#         count_num += 1
+#         print(check_num)
+# Solution 2:
+# primes = []
+# for n in range(1_000_000, 100_000_000):
+#    if is_prime(n):
+#        primes.append(n)
+#        if len(primes) == 5:
+#            break
+#
+# print(primes)
 
 
 ## Challenge #5
@@ -312,8 +402,18 @@
 # Index of the list.
 # If there isn't such an index it returns False.
 # Equilibrium index: https://www.geeksforgeeks.org/equilibrium-index-of-an-array/
-# Are you stuck? Do you want to see the solution to this exercise? Click here.
 
+# def equilibrium_index(my_list):
+#     for x in range(0,len(my_list)):
+#         if sum(my_list[:x]) == sum(my_list[x+1:]):
+#             return x
+#     return False
+#
+# nums = [2, 3, 10, 5]
+# print(equilibrium_index(nums))  # => 2
+#
+# nums = [3, 3, 10, 5]
+# print(equilibrium_index(nums))  # => False
 
 ## Challenge #6
 # Change the solution of the previous challenge so that the function receives a
@@ -324,3 +424,388 @@
 # nums = '3, 3, 10, 5'
 # print(equilibrium_index(nums)) # => False
 
+# def equilibrium_index(my_str):
+#     my_list = my_str.split(',')   # => string to list
+#     my_list = [int(n) for n in my_list]  # => converting the list of strings to a list of ints
+#
+#     for x in range(0,len(my_list)):
+#         if sum(my_list[:x]) == sum(my_list[x+1:]):
+#             return x
+#
+#     return False
+#
+# nums = '2, 3, 10, 5'
+# print(equilibrium_index(nums))  # => 2
+#
+# nums = '3, 3, 10, 5'
+# print(equilibrium_index(nums))  # => False
+
+## Files
+# open( <file>, <chars>)
+# Character Meaning  # from help(open)
+#     --------- ---------------------------------------------------------------
+#     'r'       open for reading (default)
+#     'w'       open for writing, truncating the file first
+#     'x'       create a new file and open it for writing
+#     'a'       open for writing, appending to the end of the file if it exists
+#     'b'       binary mode
+#     't'       text mode (default)
+#     '+'       open a disk file for updating (reading and writing)  -- use r+
+#     'U'       universal newline mode (deprecated)
+
+# fpath = "D:\\My_Recordings\\Python_Master\\Downloads\\"
+# f = open(fpath + 'configuration.txt', 'r')
+# content = f.read()
+# print(content)
+#
+# print(f.closed)
+# f.close()
+# print(f.closed)
+
+# head -1 configuration.txt  => 012345678790
+# f = open(fpath + 'configuration.txt', 'r')
+# content = f.read(3)     # => 012
+# print(content)
+# content = f.read(3)     # => 345
+# print(content)
+# print(f.tell())         # cursor position = 6
+# content = f.seek(2)
+# print(f.read(2))        # => 23
+# content = f.seek(0)     # cursor position = 0
+# print(f.read(2))        # => 01
+# print(f.tell())         # cursor position = 2
+# f.close()
+# print(content)
+
+#with ... as ... :  will close the file after reading contents.
+# with open(fpath + 'configuration.txt', 'r') as f:
+#     content = f.read()
+#     print(content)
+# print(f.closed)
+
+# with open(fpath + 'configuration.txt') as f:    # 'rt' is default
+#     my_list = f.read().splitlines()
+#     print(my_list[0:2])     # ['#12345678790', 'hostname Router1']
+# with open(fpath + 'configuration.txt') as f:    # 'rt' is default
+#     my_list = f.readlines()
+#     print(my_list[0:2])     # ['#12345678790\n', 'hostname Router1\n']
+
+# with open(fpath + 'configuration.txt') as f:    # 'rt' is default
+#     print(f.readline(), end="")
+#     print(f.readline(), end="")
+
+# with open(fpath + 'configuration.txt') as f:    # 'rt' is default
+#     for line in f:
+#         print(line, end="")
+
+# with open(fpath + 'configuration.txt') as f:    # 'rt' is default
+#     for line in f:
+#         print(line, end="")
+
+# with open(fpath + 'myfile.txt', 'w') as f:    # 'rt' is default
+#     f.write("mytext\n")
+#     f.write("moretext\n")
+
+# with open(fpath + 'myfile.txt', 'r+') as f:    # read + write
+#     print(f.readline())
+#     f.write("mytext\n")
+#     f.write("moretext\n")
+
+###############################
+##Working with Files in Python
+##############################
+#
+# ## Opens a file named a.txt and returns a file object called f
+# ## a.txt it's in the same directory with the python script
+# ## use a correct relative or absolute path
+# f = open('a.txt', 'r')  # it will be opened in read-only mode
+#
+# content = f.read()  # reads the entire file as a string
+# print(content)
+#
+# f.closed  # => False, file is not closed
+#
+# ## Closes the file
+# f.close()
+#
+# ## Opens the file in read-only mode and reads its contents in a list
+# ## the file object will be automatically closed
+# with open('a.txt', 'r') as my_file:
+#     content = my_file.readlines()  # content is a list
+#
+# my_file.closed  # => True, my_file has been closed automatically
+#
+# ## file object is an iterable object
+# with open('a.txt', 'r') as my_file:
+#     for line in my_file:  # iterating over the lines within the file
+#         print(line, end='')
+#
+# ## Opens the file in write-mode.
+# ## Creates the file if it doesn't exist or overwrites the file if it already exists
+# with open('my_file.txt', 'w') as file:
+#     file.write('This file will be overwritten!')
+#
+# ## Opens the file in append-mode.
+# ## Creates the file if it doesn't exist or appends to its end if it exists
+# with open('another_file.txt', 'a') as file:
+#     file.write('Appending to the end!')
+#
+# ## Opens the file for both read and write
+# ## Doesn't create the file if it doesn't exist
+# with open('my_file.txt', 'r+') as file:
+#     file.seek(0)  # the cursor is positioned at the beginning of the file
+#     file.write('Writing and the beginning')  # writing and the beginning
+#
+#     file.seek(5)  # moving the cursor at position 5
+#     content = file.read(10)  # reading 10 characters starting from position 5
+#     print(content)
+
+# Challenge #1
+#
+# Create a Python script that reads a text file into a list and then converts the list back into a string
+# which is the entire file content.
+
+fpath = "D:\\My_Recordings\\Python_Master\\Downloads\\"
+# with open(fpath + "sample_file.txt", 'r') as f:
+#     content = f.read().splitlines()
+#     my_str = '\n'.join(content)
+#     print(my_str)
+
+
+# Challenge #2
+#
+# Create a Python function called tail that reads the last n lines of a text file. The function has two
+# arguments: the file name and n (the number of lines to read). This is similar to the Linux `tail` command.
+
+# import time
+# def tail(file, n):
+#     if type(n) == int:
+#         print("int")
+#     with open(file, 'r') as f:
+#         content = f.read().splitlines()
+#         last = content[len(content)-n:]
+#         # return(last)
+#         my_str = '\n'.join(last)
+#         return(my_str)
+
+# t = tail(fpath + 'sample_file.txt', 3)
+# print(t)
+
+
+# Challenge #3
+#
+# Change the solution from the previous challenge so that the script that prints out the last n lines of
+# the file refreshes the output every 3 seconds (as the file changes or updates). This is similar to the
+# tail -f Linux command.
+
+# while True:
+#     t = tail(fpath + 'sample_file.txt', 3)
+#     print(t)
+#     time.sleep(3)
+#     print('')
+
+# import time
+# def tail(file, n):
+#     while True:
+#         with open(file, 'r') as f:
+#             content = f.read().splitlines()
+#             if type(n) == int:
+#                 last = content[len(content)-n:]
+#             else:
+#                 last = content[len(content)-3:]
+#             # return(last)
+#             my_str = '\n'.join(last)
+#         print(my_str)
+#         if type(n) == int:
+#             break
+#         time.sleep(3)
+#
+#     return(my_str)
+#
+# # t = tail(fpath + 'sample_file.txt', 3)
+# # print(t)
+# t = tail(fpath + 'sample_file.txt', '-f')
+
+# Challenge #4
+#
+# Write a Python program to count the number of lines, words, and characters in a text file. This is similar
+# to the Linux `wc` command. Create a function if possible.
+
+def wc(file):
+    with open(file) as f:
+        content = f.read().splitlines()
+        lines = len(content)
+        words = 0
+        for line in content:
+            words += len(line.split())
+        chars = 0
+        for line in content:
+            chars += len(list(line))
+        return lines, words, chars
+
+print(wc(fpath + 'sample_file.txt'))
+
+
+# Challenge #5
+#
+# Write a Python program that calculates the net amount of a bank account based on the transactions saved in a text file.
+# The file format is as follows:
+# D:50
+# W:100
+# D means deposit while W means withdrawal.
+# Suppose that the following file is supplied to the program:
+# D:300
+# D:300
+# W:500
+# D:200
+# Then, the output should be: 300
+
+# with open('banking.txt', 'r') as f:
+#     content = f.read().splitlines()
+#     # print(content)
+#
+#     deposit, withdrawal = 0, 0
+#
+#     for item in content:
+#         tmp = item.split(':')
+#         # print(tmp) # -> ['D', '300']
+#         if  tmp[0] == 'D':
+#             deposit += int(tmp[1])
+#         elif tmp[0] == 'W':
+#             withdrawal += int(tmp[1])
+#         else:
+#             print('File format error')
+#
+#     balance = deposit - withdrawal
+#     print(balance)
+
+# Challenge #6
+#
+# Write a Python script that compares two text files line by line and displays the lines that differ.
+
+# with open('a.txt') as f:
+#     file1 = f.read().splitlines()
+#
+# with open('b.txt') as f:
+#     file2 = f.read().splitlines()
+#
+# file = list(zip(file1, file2))
+#
+# i = 0
+# for item in file:
+#     i += 1
+#     if item[0] != item[1]:
+#         print(f'file1 ({i}): {item[0]}, file2 ({i}): {item[1]}')
+
+
+# Challenge #7
+#
+# Consider this dictionary file.
+# Write a Python script that reads the file in a dictionary. The words in the file will be the
+# dictionary keys and the length of each word the corresponding values.
+
+# with open('american-english.txt') as f:
+#     words = f.read().splitlines()
+#
+#     words_and_length = dict()
+#     for w in words:
+#         words_and_length[w] = len(w)
+#
+#     for k, v in words_and_length.items():
+#         print(f'{k} -> {v}')
+
+# Challenge #8
+#
+# Consider the dictionary file from the previous challenge.
+# Write a Python script that finds the first 100 longest words in the file.
+
+# with open('american-english.txt') as f:
+#     words = f.read().splitlines()
+#
+#     words_and_length = dict()
+#     for w in words:
+#         words_and_length[w] = len(w)
+#
+#     # print(words_and_length)
+#     words_list = sorted(words_and_length.items(), key=lambda x:x[1], reverse=True)
+#     print(words_list[:100])
+
+# Challenge #9
+#
+# Consider this dictionary file.
+# Write a Python script that finds the number of occurrences of each letter of the alphabet in all the
+# words in the dictionary.
+# You want to see how many times do ‘a’, ‘b’, ‘c’ and so on appear in all the words in the dictionary.
+# Which is the most frequently used letter in English words?
+
+# import string
+#
+# letters = dict()
+# # initializing the dictionary with all letters as keys and zero as values
+# for c in string.ascii_lowercase:
+#     letters[c] = 0
+#
+# # print(letters)
+# with open('american-english.txt', 'r') as words:
+#     for w in words:
+#         for char in string.ascii_lowercase:
+#             letters[char] += w.count(char)
+#
+# print(letters)
+
+# Challenge #10
+#
+# Continue the previous challenge and find the 3 most frequently used letters in all English Words.
+# You should get: ('e', 67681), ('s', 50872), ('i', 50818)
+
+# import string
+#
+# letters = dict()
+# # initializing the dictionary with all letters as keys and zero as values
+# for c in string.ascii_lowercase:
+#     letters[c] = 0
+#
+# # print(letters)
+# with open('american-english.txt', 'r') as words:
+#     for w in words:
+#         for char in string.ascii_lowercase:
+#             letters[char] += w.count(char)
+#
+# print(sorted(letters.items(), key=lambda x:x[1], reverse=True))
+
+#################################
+## Exceptions Handling
+## Exceptions are run-time Errors
+#################################
+
+# a = 2
+# # for ZeroDivisionError
+# # b = 0
+#
+# # for TypeError
+# b = '0'
+# # for another Exception
+# # del b
+#
+# try:
+#     ## try to execute this block of code!
+#     c = a / b
+# except ZeroDivisionError as e:
+#     ## This block of code is executed when a ZeroDivisionError occurs
+#     print(f'There was Division by zero: {e}')
+# except TypeError as e:
+#     ## This block of code is executed when a TypeError occurs
+#     print(f'There was a Type Error: {e}')
+# except Exception as e:
+#     ## This block of code is executed when other exception occurs
+#     print(f'Other exception accured: {e}')
+# else:
+#     ## This block of code is executed when no exception occurs
+#     print(f'No exception raised. c is {c}')
+# finally:
+#     print('This block of code is always executed!')
+#
+# print('Continue script execution..')
+# x = 2
+
+import pandas
