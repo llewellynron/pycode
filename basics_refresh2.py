@@ -484,7 +484,7 @@
 # print(f.closed)
 
 # with open(fpath + 'configuration.txt') as f:    # 'rt' is default
-#     my_list = f.read().splitlines()
+#     my_list = f.read().splitlines()       # will remove \n from lines
 #     print(my_list[0:2])     # ['#12345678790', 'hostname Router1']
 # with open(fpath + 'configuration.txt') as f:    # 'rt' is default
 #     my_list = f.readlines()
@@ -495,8 +495,8 @@
 #     print(f.readline(), end="")
 
 # with open(fpath + 'configuration.txt') as f:    # 'rt' is default
-#     for line in f:
-#         print(line, end="")
+#     for line in f:              # Does readline (which retains \n)
+#         print(line, end="")     # Use end="" to not add additional \n
 
 # with open(fpath + 'configuration.txt') as f:    # 'rt' is default
 #     for line in f:
