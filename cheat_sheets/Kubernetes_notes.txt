@@ -1,0 +1,58 @@
+alias kk="kubectl"
+kk version --short
+kk get pods -A
+kk get --help
+kubeadm upgrade plan
+kk drain <node>
+kk uncordon <node>
+kk cordon <node>
+
+kk get deployments,pod,svc 
+
+
+ETCDCTL_API=3 etcdctl  --data-dir /var/lib/etcd-from-backup snapshot restore /opt/snapshot-pre-boot.db
+
+Daemonset - deploys a pod on each node.
+Cluster IPs - 10.???   Weave allocates:  10.32.0.0/12
+Node IPs  - 172.??
+port 6443 - master API server
+etcd 2379 - port
+CIDR format  - IP/bitmask_size
+Static pods will have name appended to pod name.
+Static pods are redeployed whenever config.yaml is changed.
+
+cat john.csr | base64 | tr -d "\n"
+sed -i 's/<from>/<to>/g' <file>
+
+kubectl get netpol
+
+API server - handles k8s requests
+etcd - key value store
+kubelet - agent on each node
+scheduler - assigns pods to nodes
+controller - determines if pods are needed
+container runtime - docker typically
+
+kubectl - 
+kubectl cluster-info
+kubectl run  - runs containers in a pod
+
+Pod can have multiple containers; they are on the same localhost.
+
+kubectl get pods <pod_name> -o wide
+kubectl create -f <def.yaml>
+kubectl describe <item>
+kubectl edit pod <podname>
+kubectl run redis --image=redis123 --dry-run=client -o yaml > pod.yaml   # Creates yaml def file
+kubectl get pod <pod-name> -o yaml > pod-definition.yaml
+
+
+
+
+
+
+
+
+
+
+kubectl run busybox --image busybox --command sleep 1000 

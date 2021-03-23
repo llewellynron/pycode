@@ -1,0 +1,260 @@
+#!/bin/bash   <- first line, special comment specifies interpretter to run script
+# See:  D:\Dev\pycode\cheat_sheets\bash_cheatsheet.pdf
+#Comments  # Can be after command as well
+#Variables
+myvar=value  # (no white space, python prefers whitespace)
+unset myvar  # forget variable
+echo $myvar  # works if whitespace around var
+echo ${myvar}ing  # works if no whitespace around var, will always work.
+myvar=$(pwd) # command output is asigned to variable => command substitue expansion
+# Unassigned varialbe is blank.
+
+important_time=$(date)
+$ echo $important_time
+Mon Mar 22 15:52:17 EDT 2021
+$ dd="date"			 # variable can hold command
+$ $dd            # ==> Mon Mar 22 15:53:29 EDT 2021
+$ ${dd}					 # ==> Mon Mar 22 15:58:14 EDT 2021
+
+# read input into a variable
+read varname
+read -p "prompt string: " varname    #
+read -sp "prompt string: " varname   #secret / hide input
+
+$PATH       # show current path
+PATH="<mypath_adder>:${PATH}"
+export $PATH
+
+# Arithmetic expressions; must use $((  )) around computations
+# strings will not have a value => will be zero
+num1=10
+num2=20
+echo " SUM $(( num1 + num2 ))"
+
+# if statement
+if [ 3 -eq 3  ]; then						# Use Semicolon if then placed on same line
+  echo "yes, they are the same"
+fi
+
+# if statement
+if [ 3 -eq 3  ] 
+then
+  echo "yes, they are the same"
+fi
+
+
+# if statement  # must terminate with ; if then appended after if statemment  if [ ]; then
+read -p "Enter number: " num
+if [ $num -eq 3 ]; then       # Note, must have whitespace after the and before [ ]
+  echo "num = $num"
+elif [ $num -gt 3 ]; then
+  echo "num > 3"
+elif [ $num -lt 3 ]; then
+  echo "num < 3"
+else
+  echo "else you got here."
+fi
+
+# Equality Operators:
+-eq = ; -ne != ; -gt > ; -lt < ; -ge >= ; -le <= 
+
+# Conditions
+-o OR ; -a AND ; Logial Tests:  && AND; || OR; 
+
+read -p "Enter number: " num
+if [ $num -gt 0 -a $num -lt 100 ]; then       # Note, must have whitespace after the and before [ ]
+  echo "num = $num"
+fi  
+
+if  [ $age -gt 26 ] && [ $age -lt 64 ]; then
+        echo "you are between 26 and 64"
+        exit
+fi
+
+
+# string compare
+== equal;   !=  Not equal
+
+# Empty string test:
+read -p "Enter string: " str
+if [ -z $str ]; then
+  echo "string is empty"
+fi
+
+# Better to quote string, to make sure entire string is checked.
+read -p "Enter string: " str
+if [ -z "$str" ]; then
+  echo "string is empty"
+fi
+
+#if on files
+if [ -e $myfile ]; then
+
+if [ ! -e $myfile ]; then
+
+! not; -e exists; -d directory; -r readable; -w writeable; -x executable; -s Not Empty; -f reqular file (not dir or not exist);  
+
+# Loops
+for i in {1,2,3,4}
+do
+  echo "$i"
+done
+
+for i in {1..4}
+do
+  echo "$i 
+done
+
+for i in {1,"dog",-5,"something"}
+do
+  echo "$i 
+done
+
+#Break
+for i in {1,"dog",-5,"something"}
+do
+  if [ $i == "dog" ]; then
+    break
+  fi
+  echo "$i 
+done
+
+for i in ./*				# ; at end of for or while line is not required.
+do   
+  echo "name of file is:  ${i} "
+done
+
+# Common Mistakes
+# Putting whitespace around variable assignments.   myvar=value
+# Not using whitespace around conditional brackets  [_  _]  
+# Not using quotes around strings when comparing; whitespace could expand into multi strings
+# Not using ${var} notation; $var might concatenate into unknown var
+# Using vars in single quotes; they will not get interpretted:  ' $a ' will not interpret; use " $a " 
+
+# While Loops
+
+while [ $num -le 15 ]
+do 
+  echo "num is $num"
+  num=$(( num +4 ))				# Careful, no whitespace around = 
+done
+
+# Case
+
+echo "enter a choice"
+read choice
+case $choice in
+  "hello")
+    echo "You typed hello "
+    ;;
+  *."txt") 
+  	echo " You entered a txt file."
+  	;;
+  1)
+  	echo " You entered a 1"
+  	;;
+  2 | 3)								# Or
+  	echo " You entered 2 or 3"
+  	;;  	
+  1[2-8])
+  	echo " You entered a value between 12-18"
+  	;;
+  [a-z])
+  	echo " You entered a lower case char"
+  	;;
+  [A-Z])
+  	echo " You entered a UPPER case char"
+  	;;
+  *) echo " None of the above."
+esac   
+
+# Exit status
+echo $?      # 0 = success, !0 failure
+
+# Functions
+mydate(){
+  echo "today is: "
+  date
+  echo "Have a great day."
+}
+mydate
+
+hello2() {						# Note, Dont have to declare variaibles
+  echo "hello $1 "
+  echo "hello also to $2 "
+}
+hello2 "Mark" "Hamel"
+
+# More For Loop Examples:
+
+files=(*.txt) # put the list of matching files in an array
+for file in "${files[@]}"; do # loop through the array
+  echo "file=$file"
+done
+
+#!/bin/bash
+# Read a string with spaces using for loop
+for value in I like programming
+do
+    echo $value
+done
+
+# Define a string variable with a value
+StringVal="Welcome to linuxhint"
+
+# Iterate the string variable using for loop
+for val in $StringVal; do
+    echo $val
+done
+
+# Declare an array of string with type
+declare -a StringArray=("Linux Mint" "Fedora" "Red Hat Linux" "Ubuntu" "Debian" )
+ 
+# Iterate the string array using for loop
+for val in ${StringArray[@]}; do
+   echo $val
+done
+
+# Declare a string array with type
+declare -a StringArray=("Windows XP" "Windows 10" "Windows ME" "Windows 8.1"
+"Windows Server 2016" )
+ 
+# Read the array values with space
+for val in "${StringArray[@]}"; do
+  echo $val
+done
+
+#Declare a string array
+LanguageArray=("PHP"  "Java"  "C#"  "C++"  "VB.Net"  "Python"  "Perl")
+# Print array values in  lines
+echo "Print every element in new line"
+for val1 in ${LanguageArray[*]}; do
+     echo $val1
+done
+echo ""
+# Print array values in one line
+echo "Print all elements in a single line"
+for val2 in "${LanguageArray[*]}"; do
+    echo $val2
+done
+echo ""
+
+
+#!/bin/bash
+DataList=" HTML5, CCS3, BootStrap, JQuery "
+Field_Separator=$IFS
+# set comma as internal field separator for the string list
+IFS=,
+for val in $DataList;
+do
+echo $val
+done
+IFS=$Field_Separator
+
+find . -type d
+find . -type f
+
+basename ./folder/myfile.txt  ==> myfile.txt
+# $ basename /home/lewellyn/test2.sh
+# test2.sh
+
