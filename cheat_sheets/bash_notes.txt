@@ -258,3 +258,49 @@ basename ./folder/myfile.txt  ==> myfile.txt
 # $ basename /home/lewellyn/test2.sh
 # test2.sh
 
+# Single Liners:
+$ if [ 5 -gt 3 ]; then echo "hi"; sleep 3; fi
+$ for i in {1..3}; do echo $i; done
+$ while [ 1 -gt 3 ]; do echo "hi"; sleep 3; done
+$ for i in *; do echo $i; done			# List all files
+$ for i in *.sh; do echo $i; done
+$ for i in $(find . -type f); do echo $i; done
+$ for i in $(find . -type f); do count=$(( count+1 )); echo "${count}. $i"; done
+
+
+# Linux Commands Often used:
+# Remove Header line:  tail -n +2
+$ ls -lrt | tail -n +2
+
+# use awk to print a column:
+$ ls -lrt | tail -n +2 | awk '{print $9}'
+
+# AWK
+awk '{print } file   			# Print entire contents
+awk '{print $0} file   		# Print entire contents
+awk '{print $1} file			# Print 1st column (starts at 1)
+awk '{print $1 $2} file		# Columns 1 and 2 concatenated
+awk '{print $1,$2} file		# Columns 1 and 2 with space between them
+awk '{print $NF} file			# Last column; NF number of fields?
+awk '{print $(NF-1)} file	# 2nd to Last column; last column - 1
+awk 'NR==2 {print $(NF-1)} file		# Row 2
+awk 'NR==2,NR==5 {print $(NF-1)} file	# Row 2 through 5
+awk 'NR==2;NR==5 {print $(NF-1)} file	# Row 2 and 5
+# for different delemiter
+awk -F "," '{print $1} file		# Print 1st column from CSV file
+
+# AWK searching, matching, functions
+awk '/searchstr/ {print } file
+awk '/searchstr|str2/ {print } file   # multi search
+awk '$2~/searchstr|str2/ {print } file   # multi search in 2nd column
+awk '$1==$3  {print } file   # rows where columns match
+awk '  {print $1,length($1)} file   # shows length of field.
+
+# SED
+
+# TR
+
+# TEE
+
+# FIND
+

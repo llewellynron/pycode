@@ -1,0 +1,61 @@
+https://docs.docker.com/
+
+# Check Linux release
+cat /etc/*release*
+
+# Install Docker, scroll to bottom and use convenience script:
+https://docs.docker.com/engine/install/centos/
+https://docs.docker.com/engine/install/ubuntu/
+ curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+
+sudo docker version
+
+# Run a test docker image
+https://hub.docker.com/
+
+#image: whalesay
+sudo docker run docker/whalesay cowsay Hello-World!
+
+#Docker Commands
+docker run <image>  # will pull image from dockerhub if not existing
+docker ps   				# Running containers
+docker ps -a 				# List running and previously stopped/exited containers
+
+docker stop [ <container> or <container ID prefix> ]
+docker ps -a 
+docker rm <container>
+docker ps -a 
+
+docker images
+docker image ls
+docker rmi <container>   		# Remove image; must have no running images
+
+docker pull <image>					# download image
+
+docker run ubuntu						# ubuntu runs bash, which will exit after running.
+docker run ubuntu sleep 5
+
+docker exec <container> <command>	
+docker run <image>          # runs in foreground
+docker run -d <image>				# runs image in background (detached)
+docker attach (container ID - enough chars to be uniq)
+
+# CLI
+# Poor mans Linux VM 				# Need to also setup home directory volume!!!
+docker run centos		
+docker run -it centos bash  # Interactive, starts me in bash images.
+  cat /etc/*release*
+
+docker run -d centos sleep 20
+docker ps
+docker ps -a 
+
+
+
+
+
+
+
+
+
