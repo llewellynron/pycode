@@ -47,12 +47,83 @@ docker run centos
 docker run -it centos bash  # Interactive, starts me in bash images.
   cat /etc/*release*
 
-docker run -d centos sleep 20
+docker run -d centos sleep 20   # Run docker image in background (detached)
 docker ps
 docker ps -a 
+docker ps -a --no-trunc				# Show long names
+
+# List unique images
+docker images | tail -n +2 | awk '{print $1}' | uniq | wc -l
+# Remove container images
+for i in $(docker ps -a | tail -n +2 | awk '{print $1}'); do docker rm $i; done
+#Remove Images
+for i in $(docker images | tail -n +2 | awk '{print $1":"$2}'); do docker rmi $i; done
+
+# Execute command on containers
+docker exec <container> <command>
+docker exec -it <container> bash  	# bash interpretter
+docker exec -it <container> sh			# shell interpretter
+docker exec -it <container> /bin/sh	-c command		# run command with shell interpretter
+docker run image:tag				# default tag is: latest
+
+#STDIN
+docker run -it image        # interacts, with terminal
+
+#Port Mapping
+docker run -p <localhost_port>:<container_port> image
+
+#Volume Mapping
+docker run -v <localhost_path>:<container_mountpath> image
+
+#Inspect container  (like describe in k8s)
+docker inspect container
+
+#Logs
+docker logs container
+
+#Environment Vars
+docker run -d -e MYENVVAR=value --name myname image
+
+#Docker internal IP (if don't map port for localhost)
+docker inspect container | grep IPAddress		#Under Networks section
+
+docker history image  		# shows how the image was built
 
 
 
+
+
+#Jenkins
+docker run jenkins
+docker container run --name jenkins-docker \
+  --detach --restart unless-stopped \
+  --privileged \
+  --network jenkins --network-alias docker \ 
+  --env DOCKER_TLS_CERTDIR="/certs" \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  docker:dind
+
+#Splunk
+
+$ cat Dockerfile 
+FROM python:3.6
+
+RUN pip install flask
+
+COPY . /opt/
+
+EXPOSE 8080
+
+WORKDIR /opt
+
+ENTRYPOINT ["python", "app.py"]
+
+# Build the Docker image:
+docker build -t webapp-color .
+
+#Find release info of image source
+docker exec <container_ID_prefix or continanter_name> cat /etc/*release*
 
 
 

@@ -276,18 +276,18 @@ $ ls -lrt | tail -n +2
 $ ls -lrt | tail -n +2 | awk '{print $9}'
 
 # AWK
-awk '{print } file   			# Print entire contents
-awk '{print $0} file   		# Print entire contents
-awk '{print $1} file			# Print 1st column (starts at 1)
-awk '{print $1 $2} file		# Columns 1 and 2 concatenated
-awk '{print $1,$2} file		# Columns 1 and 2 with space between them
-awk '{print $NF} file			# Last column; NF number of fields?
-awk '{print $(NF-1)} file	# 2nd to Last column; last column - 1
-awk 'NR==2 {print $(NF-1)} file		# Row 2
-awk 'NR==2,NR==5 {print $(NF-1)} file	# Row 2 through 5
-awk 'NR==2;NR==5 {print $(NF-1)} file	# Row 2 and 5
+awk '{print }' file   			# Print entire contents
+awk '{print $0}' file   		# Print entire contents
+awk '{print $1}' file			# Print 1st column (starts at 1)
+awk '{print $1 $2}' file		# Columns 1 and 2 concatenated
+awk '{print $1,$2}' file		# Columns 1 and 2 with space between them
+awk '{print $NF}' file			# Last column; NF number of fields?
+awk '{print $(NF-1)}' file	# 2nd to Last column; last column - 1
+awk 'NR==2 {print $(NF-1)}' file		# Row 2
+awk 'NR==2,NR==5 {print $(NF-1)}' file	# Row 2 through 5
+awk 'NR==2;NR==5 {print $(NF-1)}' file	# Row 2 and 5
 # for different delemiter
-awk -F "," '{print $1} file		# Print 1st column from CSV file
+awk -F "," '{print $1}' file		# Print 1st column from CSV file
 
 # AWK searching, matching, functions
 awk '/searchstr/ {print } file
@@ -304,3 +304,11 @@ awk '  {print $1,length($1)} file   # shows length of field.
 
 # FIND
 
+# List unique images
+docker images | tail -n +2 | awk '{print $1}' | uniq | wc -l
+# Remove container images
+for i in $(docker ps -a | tail -n +2 | awk '{print $1}'); do docker rm $i; done
+#Remove Images
+for i in $(docker images | tail -n +2 | awk '{print $1":"$2}'); do docker rmi $i; done
+
+# Localhost IP = 127.0.0.1
