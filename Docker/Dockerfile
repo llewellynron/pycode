@@ -1,4 +1,5 @@
 # Use an official Python runtime as a parent image
+# From: https://hub.docker.com/_/python?tab=tags&page=1&name=3.9.2-alpine
 FROM python:3.9.2-alpine
 
 # Set the working directory to /app
