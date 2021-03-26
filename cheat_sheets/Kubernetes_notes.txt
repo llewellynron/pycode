@@ -49,10 +49,23 @@ kubectl get pod <pod-name> -o yaml > pod-definition.yaml
 
 
 
-
-
-
-
-
-
 kubectl run busybox --image busybox --command sleep 1000 
+
+
+Master Node will manage work on the worker Notes:                                                        
+                                                                                                         
+Components:                                                                                              
+                                                                                                         
+API Server = front end for kubernetes; users and command line interact with API server                   
+etcd = key / value store; stores data to manage the cluster; stores info in distributed manner and locks.
+scheduler = distributes work; assigns work                                                               
+controller = brains behind orchestration, if any node or pod goes down.                                  
+contain runtime = docker                                                                                 
+kubelet = agent that runs on each node; makes sures the containers are running on the nodes as expected. 
+                                                                                                         
+kubectl = CLI to deploy and manage K8S clusters.                                                         
+ - run (run container image).                                                                            
+ - cluster-info                                                                                          
+ - get                                                                                                   
+ 
+ 

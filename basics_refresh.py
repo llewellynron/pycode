@@ -1,4 +1,20 @@
+## Note:  You may want to use IDLE for prototyping new function usage
+## Use help(object<.function>) for help
+## Use dir(object) for list of methods and attributes
+## Use dir() for list of names in local scope
 # Style Guide:  https://www.python.org/dev/peps/pep-0008/
+
+#############################
+##Types of Variables
+#############################
+# • Numbers: Integers (ints) or whole numbers and Floating point numbers of simply floats
+# • Booleans: Logical values indicating False or True
+# • Strings: Ordered sequence of characters
+# • Lists: Ordered mutable sequence of objects
+# • Tuples: Ordered immutable sequence of objects
+# • Sets: Mutable collection of unordered unique objects
+# • FrozenSets: Mutable collection of unordered unique objects
+# • Dictionaries: Collection unordered key:value pairs
 
 #############################
 ##Numbers and Math Operators
@@ -743,6 +759,26 @@
 #
 # print(my_sum)
 # #######################
+#################################
+## Python Collections:
+#################################
+# List = [ ] ordered and changeable; allows duplicate members
+# tuple = ( ) ordered and unchangeable; allows duplicate members
+# set  = { } unordered and unindexed; No duplicate members
+# dictionary = { } unordered and changeable; No duplicate members
+
+tuple1 = ('disco',1,2.3)
+print(tuple1[1])
+list1 = ['disco',1,2.3]
+print(list1[1])
+set1 = {'disco',1,2.3}
+#print(set1[1])                         # Not allowed, not indexed
+print(set1)                             # => {1, 2.3, 'disco'}
+for i in set1:                          # Is iterable
+    print(i)
+dict1 = {'disco':1,"1":1,"key3":2.3}
+print(dict1['disco'])
+exit()
 
 #################################
 ## Intro to Lists

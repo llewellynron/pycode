@@ -7,7 +7,17 @@ unset myvar  # forget variable
 echo $myvar  # works if whitespace around var
 echo ${myvar}ing  # works if no whitespace around var, will always work.
 myvar=$(pwd) # command output is asigned to variable => command substitue expansion
-# Unassigned varialbe is blank.
+# Unassigned variable is blank.
+
+#Command Line accelerators
+#Ctrl+A = beginning of line
+#Ctrl+E = end of line
+#Ctrl+U = clear to beginning of line
+#Ctrl+K = clear to end of line
+#Ctrl+C = break; cancel
+#Ctrl+R = Search
+#Ctrl+L = Clear the screen
+#Prefix with # to delay execution
 
 important_time=$(date)
 $ echo $important_time
@@ -206,6 +216,25 @@ StringVal="Welcome to linuxhint"
 for val in $StringVal; do
     echo $val
 done
+
+#How to retrieve the first word of the output of a command in bash?
+#String to array assignment; ref: https://stackoverflow.com/questions/2440414/how-to-retrieve-the-first-word-of-the-output-of-a-command-in-bash
+array=( $string ) # do not use quotes in order to allow word expansion
+echo ${array[0]} # You can retrieve any word. Index runs from 0 to length-1
+#Also, you can directly read arrays in a pipe-line:
+echo "word1 word2" | while read -a array; do echo "${array[0]}" ; done
+#Awk is a good option if you have to deal with trailing whitespace because it'll take care of it for you:
+echo "   word1  word2 " | awk '{print $1;}' # Prints "word1"
+#Cut won't take care of this though:
+echo "  word1  word2 " | cut -f 1 -d " " # Prints nothing/whitespace
+#Bash itself can do the job
+$ string="word1 word2"
+$ set -- $string
+$ echo $1
+word1
+$ echo $2
+word2
+echo "word1 word2" | while read -a array; do echo "${array[0]}" ; done
 
 # Declare an array of string with type
 declare -a StringArray=("Linux Mint" "Fedora" "Red Hat Linux" "Ubuntu" "Debian" )

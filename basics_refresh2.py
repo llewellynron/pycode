@@ -1,3 +1,4 @@
+## Note:  You may want to use IDLE for prototyping new function usage
 ## Section 11+ coding exercises
 
 # # Functions Review
@@ -631,19 +632,19 @@ fpath = "D:\\My_Recordings\\Python_Master\\Downloads\\"
 # Write a Python program to count the number of lines, words, and characters in a text file. This is similar
 # to the Linux `wc` command. Create a function if possible.
 
-def wc(file):
-    with open(file) as f:
-        content = f.read().splitlines()
-        lines = len(content)
-        words = 0
-        for line in content:
-            words += len(line.split())
-        chars = 0
-        for line in content:
-            chars += len(list(line))
-        return lines, words, chars
-
-print(wc(fpath + 'sample_file.txt'))
+# def wc(file):
+#     with open(file) as f:
+#         content = f.read().splitlines()
+#         lines = len(content)
+#         words = 0
+#         for line in content:
+#             words += len(line.split())
+#         chars = 0
+#         for line in content:
+#             chars += len(list(line))
+#         return lines, words, chars
+#
+# print(wc(fpath + 'sample_file.txt'))
 
 
 # Challenge #5
@@ -808,4 +809,67 @@ print(wc(fpath + 'sample_file.txt'))
 # print('Continue script execution..')
 # x = 2
 
-import pandas
+# ## VAT tax exercise -- format float
+# phone = {'Brand': 'Samsung', 'Price': 650.2, 'Seller': 'Nile'}
+# price = phone['Price']
+# vat = format(price * 0.19, '.2f')  ## format() returns a string
+# vat = float(vat)  ## casting to float
+# print(vat)  # => 123.54
+
+# ## list slicing
+# my_list = [1, 2.3, 'abc', (5, 6, 'x', 'y')]
+# my_var = str(my_list[1]) + my_list[2][0] + my_list[-1][-1]
+# print(my_var)  # => 2.3ay
+
+# ## list slicing
+# languages = ['English', 'Python', 'Java', 'Golang', 'German']
+# ## Slicing that returns a new list with elements from index 1 included to index -1 excluded
+# languages = languages[1:-1]
+# print(languages)  ## => ['Python', 'Java', 'Golang']
+
+# ## Convert range into list
+# my_list = list(range(-20, 8, 3))
+# print(my_list)  # => [-20, -17, -14, -11, -8, -5, -2, 1, 4, 7]
+
+# ## List comprehension
+# message = 'Wow! Python is great'
+# vowels = 'aeio'
+# no_vowels = [x for x in message if x not in vowels and x != ' ']
+# print(no_vowels)  # => ['W', 'w', '!', 'P', 'y', 't', 'h', 'n', 's', 'g', 'r', 't']
+
+# ## Set Intersection
+# names1 = {'John', 'Marry', 'Lena', 'Pollux'}
+# names2 = {'Dan', 'Arthur', 'Marry', 'Lena', 'Castor'}
+# names = names1 & names2  # names is of type set
+# names = list(names)  # converting set to list
+# print(names)  # => ['Lena', 'Marry']
+
+# ## Set Union
+# phone1 = ['1111', '2222', '2222', '1111']
+# phone2 = ['1111', '3333', '3333', '1111']
+# ## Casing lists to sets (to remove duplicates) and using the union operation
+# ## union() or | returns the set of all unique elements present in all the sets.
+# phone_numbers = set(phone1) | set(phone2)
+# ## Equivalent to:
+# phone_numbers = set(phone1).union(set(phone2))
+# print(phone_numbers)  # => {'1111', '3333', '2222'}
+
+# ## String split and concatenation   # see: help(str.split)
+# my_str = 'wlo1      Link encap:Ethernet  HWaddr b4:6d:83:77:85:f3'
+# my_list = my_str.split()
+# ## my_list is ['wlo1', 'Link', 'encap:Ethernet', 'HWaddr', 'b4:6d:83:77:85:f3']
+# ## We concatenate the first list element, '!' and the last list element
+# interface_mac = my_list[0] + '!' + my_list[-1]
+# print(interface_mac)  # => wlo1!b4:6d:83:77:85:f3
+
+# ## Numeric function with string input
+# def my_function(num):
+#     try:
+#         result = int(num) + int(num * 2) + int(num * 3)
+#         return result
+#     except:
+#         return(None)
+# result = my_function('5')
+print(result)  # => 615
+
+
