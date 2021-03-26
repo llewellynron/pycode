@@ -1,0 +1,4 @@
+https://www.jetbrains.com/help/pycharm/basic-editing.html
+Ctrl+/   = comment or uncomment
+Tab or Shift+Tab = Shift selected lines
+Ctrl+Alt+I   = Auto Indent current line or selected lines
