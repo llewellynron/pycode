@@ -11,6 +11,18 @@
 # print("d:h:m:s-> %d:%d:%d:%d" % (day, hour, minutes, seconds))
 
 ############################################
+# import subprocess
+# # print(subprocess.check_output(['nslookup', 'google.com']))
+# # print(subprocess.check_output(['tail', 'D:\\Dev\pycode\\basics_refresh2.py']))
+# mytext = subprocess.check_output(['tail', 'D:\\Dev\pycode\\basics_refresh2.py'])
+# mystr = mytext.decode()
+# mylist = mystr.splitlines()
+# print(mylist)               # => ["# print(taxes)  # => {'John': 5000.0, 'Anne': 6600.0, 'Antonio': 4800.0}", '', '', '', '', '', '', '', '', '']
+# for lines in mylist:
+#     print(lines)
+# exit()
+
+############################################
 from datetime import datetime
 import pytz
 import calendar

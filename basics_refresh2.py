@@ -870,6 +870,145 @@ fpath = "D:\\My_Recordings\\Python_Master\\Downloads\\"
 #     except:
 #         return(None)
 # result = my_function('5')
-print(result)  # => 615
+# print(result)  # => 615
+
+# ## List with duplicates
+# mac = ['b4:6d:83:77:85:f3', 'b4:6d:83:77:85:f3', 'a4:6d:83:77:85:f4', 'c4:6d:83:77:85:f3', 'b4:6d:83:77:85:f3']
+# ## New empty list
+# mac_unique = list()
+# ## Iterate over the list
+# for item in mac:
+#     if item not in mac_unique:  # check if each element is already in mac_unique list
+#         mac_unique.append(item)  # add it if it's not in the mac_unique list
+# print(mac_unique)
+
+# ## List with duplicates using Comprehension
+# years = [2010, 2010, 2011, 2011, 2012, 2012, 2012]
+# ## New list with unique elements
+# years_unique = []
+# ## Adding only unique elements from years in years_unique
+# [years_unique.append(item) for item in years if item not in years_unique]
+# print(years_unique)  # => [2010, 2011, 2012]
+# ## Using set
+# year_set = set(years)
+# [years_unique.append(item) for item in year_set]
+# print(years_unique)  # => [2010, 2011, 2012]
+
+# ## List of Words
+# words = ['Anna', 'Car', 'Civic', 'Screen', 'Level', 'Cat', 'Mom' ]
+# ## YOUR CODE STARTS HERE
+# palindromes = [ x for x in words if x.lower() == x.lower()[::-1] ]
+# ## List of Words
+# words = ['Anna', 'Car', 'Civic', 'Screen', 'Level', 'Cat', 'Mom']
+# ## List comprehension that constructs a list of palindromes from names list
+# palindromes = [items for items in words if items.lower() == items[::-1].lower()]
+# print(palindromes)  # => ['Anna', 'Civic', 'Level', 'Mom']
+
+# def remove_from_list(my_list, item):
+#     """
+#     Function that removes all occurrances of item from my_list
+#     """
+#     ## YOUR CODE STARTS HERE
+#     my_list2 = my_list.copy()
+#     for x in my_list2:
+#         print(x)
+#         if x == item:
+#             my_list.remove(x)           # Note: removing from list will confuse for looping indexing, so copy list first
+# list1 = [1, 2, 1, 1, 1, 1, 3]
+# remove_from_list(list1, 1)
+# print(list1)
+# exit()
+#
+# def remove_from_list(my_list, item):
+#     """
+#     Function that removes an item from a list
+#     """
+#     while (item in my_list):  # check if the element belongs to the list
+#         my_list.remove(item)  # remove THE FIRST occurrence of the element
+# list1 = [1, 2, 1, 1, 1, 1, 3]
+# ## Calling the function and remove 1 from the list
+# remove_from_list(list1, 1)
+# print(list1)  # => [2, 3]
+
+# ## Removing duplicates from list by transforming it to a set and then back to a list
+# countries = ['USA', 'UK', 'France', 'Romania', 'France', 'Germany', 'USA', 'Canada', 'India', 'UK']
+# countries = list(set(countries))
+# countries.sort()  ## Sorting the list in place
+# print(countries)  # => ['Canada', 'France', 'Germany', 'India', 'Romania', 'UK', 'USA']
+
+# ## YOUR CODE SATRTS HERE
+# ip_mac = list()
+# with open('show_arp.txt') as myfile:
+#     for line in myfile:
+#         wordlist = line.split()
+#         if wordlist[0] == "Protocol":
+#             continue
+#         mytuple = (wordlist[1], wordlist[3])
+#         ip_mac.append(mytuple)
+#
+# ##
+#
+#
+# with open('show_arp.txt', 'r', newline='') as f:
+#     ## Reading file in list (each line is list element)
+#     contents = f.read().splitlines()
+#     ## The argument newline='' is necessary only in Windows
+#     ## Eliminating the first item from the list (files header)
+#     contents = contents[1:]
+#     # Empty list that stores tuples like (ip, mac)
+#     ip_mac = list()
+#     # Iterating over the list(file contents) line by line
+#     for line in contents:
+#         ip = line.split()[1]  ## Getting the IP
+#         mac = line.split()[3]  ## Getting the MAC
+#         ## Adding the tuple to the ip_mac list
+#         ip_mac.append((ip, mac))
+#     print(
+#         ip_mac)  # [('192.168.122.10', 'aabb.cc00.0200'), ('192.168.122.20', 'aabb.cc00.0100'), ('192.168.122.30', 'aabb.cc00.0300')]
+# ## show_arp.txt contents:
+# # Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+# # Internet  192.168.122.10          -   aabb.cc00.0200  ARPA   Ethernet0/0
+# # Internet  192.168.122.20          0   aabb.cc00.0100  ARPA   Ethernet0/0
+# # Internet  192.168.122.30          0   aabb.cc00.0300  ARPA   Ethernet0/0
+
+# ## Lambda function
+# ## Assigning lambda expression to a variable called area
+# ## length is lambda argument
+# area = lambda length: length ** 2
+# print(area(2.5))  # => 6.25
+
+# ## Formatting output
+# ## The value of the constant PI with many decimal points
+# PI = 3.141592653589793
+# ## Convert it to 4 decimal points, format() returns a string
+# PI = format(PI, '.5f')
+# PI = float(PI)  ## cast PI which is string to float
+# print(PI)  # => 3.14159
+
+# countries = {'us': 'United States of America', 'br': 'Brazil', 'de': 'Germany', 'at': 'Austria'}
+# ## YOUR CODE STARTS HERE
+# # print out the values of the dictionary sorted by keys alphabetically. Each value should be on its own line.
+# my_keys = countries.keys()
+# for key1 in sorted(my_keys):
+#     print(countries[key1])
+#
+# countries = {'us': 'United States of America', 'br': 'Brazil', 'de': 'Germany', 'at': 'Austria'}
+# ## List of keys sorted in alphabetical order
+# keys = sorted(countries.keys())
+# ## Iterate over the keys and print the corresponding value of the dictionary
+# for k in keys:
+#     print(countries[k])
+
+# ## Dictionary Comprehension
+# salaries = {'John': 50000, 'Anne': 66000, 'Antonio': 48000}
+# taxes = {k: v * 0.1 for k, v in salaries.items()}
+# print(taxes)  # => {'John': 5000.0, 'Anne': 6600.0, 'Antonio': 4800.0}
+
+
+
+
+
+
+
 
 
