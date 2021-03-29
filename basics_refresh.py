@@ -3,6 +3,7 @@
 ## Use dir(object) for list of methods and attributes
 ## Use dir() for list of names in local scope
 # Style Guide:  https://www.python.org/dev/peps/pep-0008/
+# Review/Learning reference:  https://www.programiz.com/python-programming/first-program
 
 #############################
 ##Types of Variables
@@ -88,6 +89,9 @@
 # print(f"ida = {id(stra)} idb= {id(strb)}")
 # print(f"ida = {id(stra)} idb= {id(strc[0:3])} and strings match is {stra==strc[0:3]}")  # True
 # print(stra is strb)  # is True
+# print(1, 2, 3, 4, sep='#', end='&')   # => 1#2#3#4&
+# print('Hello {name}, {greeting}'.format(greeting = 'Goodmorning', name = 'John'))  # => Hello John, Goodmorning
+# print('The value of x is %3.2f' %x)   # => The value of x is 12.35
 
 #################################
 ## Boolean Variables
@@ -138,6 +142,7 @@
 #################################
 # exp1 and exp2 -> True when both expressions are True and False otherwise
 # exp1 or exp2  -> True when any expression is True
+# not
 
 # a, b = 3, 5
 #
@@ -179,6 +184,25 @@
 # ## This will be evaluated to True
 # result2 = (not x > 0) or 'Py' in y
 # print(result2)
+
+## Bitwise Operators
+#  |  Bitwise OR  x | y = 14 (0000 1110
+#  &  Bitwise AND   x & y = 0 (0000 000
+#  ~  Bitwise NOT  ~x = -11 (1111 0101)
+#  ^  Bitwise XOR  x ^ y = 14 (0000 111
+#  <<  Bitwise left shift  x << 2 = 40
+#  >>  Bitwise right shift  x >> 2 = 2
+
+## Membership operators
+# in and not in are the membership operators in Python.
+# They are used to test whether a value or variable is found in a sequence
+# (string, list, tuple, set and dictionary).
+# x = 'Hello world'
+# y = {1:'a',2:'b'}
+# print('H' in x)  # Output: True
+# print('hello' not in x)  # Output: True
+# print(1 in y)  # Output: True
+# print('a' in y)  # Output: False
 
 #################################
 ## Intro to Strings
