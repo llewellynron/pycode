@@ -690,6 +690,16 @@
 # ## After running the code above str1 is 'I Love P'
 # print(str1)  # => I Love P
 
+# # program to display student's marks from record
+# student_name = 'Soyuj'
+# marks = {'James': 90, 'Jules': 55, 'Arthur': 77}
+# for student in marks:
+#     if student == student_name:
+#         print(marks[student])
+#         break
+# else:
+#     print('No entry with that name found.')
+
 #################################
 ## While Loops
 #################################
@@ -783,6 +793,18 @@
 #
 # print(my_sum)
 # #######################
+
+## Unassigned strings act like comments, and python will ignore them.
+# '''Example to illustrate
+# the use of else statement
+# with the while loop'''
+# counter = 0
+# while counter < 3:
+#     print("Inside loop")
+#     counter = counter + 1
+# else:
+#     print("Inside else")
+
 #################################
 ## Python Collections:
 #################################
